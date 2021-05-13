@@ -1,0 +1,2 @@
+# COM Monitor
+There are a lot in the world, and most of them look funny, or aren't very useful or have so many functions they can't do the simple tasks. And them you have the versions where you think this is OK, but why it this pay to use, for something as simple as just showing and sending some data. So I made an other one.
