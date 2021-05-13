@@ -204,7 +204,6 @@ namespace ComMon
 
 		private System.Windows.Forms.ToolStrip ToolBar;
 		private System.Windows.Forms.StatusStrip Status;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
 		private System.Windows.Forms.ToolStripStatusLabel BaudStatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel DataStatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel StopStatusLabel;

@@ -22,7 +22,10 @@ namespace ComMon
 		}
 
 		private void OpenMenuItem_Click(object sender, EventArgs e) {
-			OpenMonitor("COM1");
+			OpenForm form = new OpenForm();
+			if (form.ShowDialog(this) == DialogResult.OK) {
+				OpenMonitor(form.PortName);
+			}
 		}
 
 		private void OpenMonitor(string portName) {
