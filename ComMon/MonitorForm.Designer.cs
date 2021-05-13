@@ -42,6 +42,7 @@ namespace ComMon
 			this.HexView = new System.Windows.Forms.RichTextBox();
 			this.TextView = new System.Windows.Forms.RichTextBox();
 			this.ViewPanel = new System.Windows.Forms.Panel();
+			this.OpenSettings = new System.Windows.Forms.ToolStripButton();
 			this.ToolBar.SuspendLayout();
 			this.Status.SuspendLayout();
 			this.ViewPanel.SuspendLayout();
@@ -55,7 +56,8 @@ namespace ComMon
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4,
-            this.HexToggle});
+            this.HexToggle,
+            this.OpenSettings});
 			this.ToolBar.Location = new System.Drawing.Point(0, 0);
 			this.ToolBar.Name = "ToolBar";
 			this.ToolBar.Size = new System.Drawing.Size(759, 25);
@@ -179,6 +181,14 @@ namespace ComMon
 			this.ViewPanel.TabIndex = 6;
 			this.ViewPanel.Resize += new System.EventHandler(this.ViewPanel_Resize);
 			// 
+			// OpenSettings
+			// 
+			this.OpenSettings.Image = ((System.Drawing.Image)(resources.GetObject("OpenSettings.Image")));
+			this.OpenSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.OpenSettings.Name = "OpenSettings";
+			this.OpenSettings.Size = new System.Drawing.Size(69, 22);
+			this.OpenSettings.Text = "Settings";
+			// 
 			// MonitorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -217,5 +227,6 @@ namespace ComMon
 		private System.Windows.Forms.RichTextBox HexView;
 		private System.Windows.Forms.RichTextBox TextView;
 		private System.Windows.Forms.Panel ViewPanel;
+		private System.Windows.Forms.ToolStripButton OpenSettings;
 	}
 }

@@ -37,7 +37,7 @@ namespace ComMon
 			Ports.Items.Clear();
 			Ports.Items.AddRange(devices);
 			if (devices.Contains(current)) {
-				Ports.SelectedValue = devices;
+				Ports.SelectedItem = current;
 			} else if (Ports.Items.Count > 0) {
 				if (Ports.SelectedIndex < 0)
 					Ports.SelectedIndex = 0;
@@ -51,7 +51,7 @@ namespace ComMon
 		}
 
 		private void Ports_SelectedIndexChanged(object sender, EventArgs e) {
-			PortName = Ports.SelectedValue as string;
+			PortName = Ports.SelectedItem as string;
 			ButtonOpen.Enabled = Ports.SelectedIndex >= 0;
 		}
 

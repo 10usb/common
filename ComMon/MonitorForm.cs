@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,13 @@ namespace ComMon
 {
 	public partial class MonitorForm : Form
 	{
+		private SerialPort port;
+
 		public MonitorForm(string portName) {
 			InitializeComponent();
 			HexToggle.Click += HexToggle_Click;
+
+			port = new SerialPort(portName);
 		}
 
 		private void HexToggle_Click(object sender, EventArgs e) {
