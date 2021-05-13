@@ -18,8 +18,14 @@ namespace ComMon
 		public MonitorForm(string portName) {
 			InitializeComponent();
 			HexToggle.Click += HexToggle_Click;
+			OpenSettings.Click += OpenSettings_Click;
 
 			port = new SerialPort(portName);
+		}
+
+		private void OpenSettings_Click(object sender, EventArgs e) {
+			PortSettingsDialog form = new PortSettingsDialog(port);
+			form.ShowDialog(this);
 		}
 
 		private void HexToggle_Click(object sender, EventArgs e) {

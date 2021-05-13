@@ -1,7 +1,7 @@
 ﻿
 namespace ComMon
 {
-	partial class OpenForm
+	partial class OpenPortDialog
 	{
 		/// <summary>
 		/// Required designer variable.

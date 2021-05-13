@@ -22,7 +22,7 @@ namespace ComMon
 		}
 
 		private void OpenMenuItem_Click(object sender, EventArgs e) {
-			OpenForm form = new OpenForm();
+			OpenPortDialog form = new OpenPortDialog();
 			if (form.ShowDialog(this) == DialogResult.OK) {
 				OpenMonitor(form.PortName);
 			}
@@ -39,6 +39,10 @@ namespace ComMon
 			monitor.Resize += Monitor_Resize;
 
 			PositionForm(monitor);
+
+			if (FormContainer.Controls.Count <= 0) {
+				monitor.WindowState = FormWindowState.Maximized;
+			}
 
 			FormContainer.Controls.Add(monitor);
 			monitor.Show();

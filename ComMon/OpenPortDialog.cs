@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace ComMon
 {
-	public partial class OpenForm : Form
+	public partial class OpenPortDialog : Form
 	{
 		private Timer timer;
 
 		public string PortName { get; private set; }
 
-		public OpenForm() {
+		public OpenPortDialog() {
 			InitializeComponent();
 
 			timer = new Timer();
