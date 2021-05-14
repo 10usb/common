@@ -28,12 +28,12 @@ namespace ComMon
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonitorForm));
 			this.ToolBar = new System.Windows.Forms.ToolStrip();
-			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+			this.StartButton = new System.Windows.Forms.ToolStripButton();
+			this.StopButton = new System.Windows.Forms.ToolStripButton();
+			this.ClearButton = new System.Windows.Forms.ToolStripButton();
+			this.WriteButton = new System.Windows.Forms.ToolStripButton();
 			this.HexToggle = new System.Windows.Forms.ToolStripButton();
+			this.OpenSettings = new System.Windows.Forms.ToolStripButton();
 			this.Status = new System.Windows.Forms.StatusStrip();
 			this.BaudStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.DataStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -42,7 +42,6 @@ namespace ComMon
 			this.HexView = new System.Windows.Forms.RichTextBox();
 			this.TextView = new System.Windows.Forms.RichTextBox();
 			this.ViewPanel = new System.Windows.Forms.Panel();
-			this.OpenSettings = new System.Windows.Forms.ToolStripButton();
 			this.ToolBar.SuspendLayout();
 			this.Status.SuspendLayout();
 			this.ViewPanel.SuspendLayout();
@@ -51,11 +50,10 @@ namespace ComMon
 			// ToolBar
 			// 
 			this.ToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripButton4,
+            this.StartButton,
+            this.StopButton,
+            this.ClearButton,
+            this.WriteButton,
             this.HexToggle,
             this.OpenSettings});
 			this.ToolBar.Location = new System.Drawing.Point(0, 0);
@@ -64,53 +62,61 @@ namespace ComMon
 			this.ToolBar.TabIndex = 0;
 			this.ToolBar.Text = "toolStrip1";
 			// 
-			// toolStripLabel1
+			// StartButton
 			// 
-			this.toolStripLabel1.Name = "toolStripLabel1";
-			this.toolStripLabel1.Size = new System.Drawing.Size(41, 22);
-			this.toolStripLabel1.Text = "COM1";
+			this.StartButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.StartButton.Image = ((System.Drawing.Image)(resources.GetObject("StartButton.Image")));
+			this.StartButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.StartButton.Name = "StartButton";
+			this.StartButton.Size = new System.Drawing.Size(23, 22);
+			this.StartButton.Text = "Start";
 			// 
-			// toolStripButton1
+			// StopButton
 			// 
-			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(51, 22);
-			this.toolStripButton1.Text = "Start";
+			this.StopButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.StopButton.Image = ((System.Drawing.Image)(resources.GetObject("StopButton.Image")));
+			this.StopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.StopButton.Name = "StopButton";
+			this.StopButton.Size = new System.Drawing.Size(23, 22);
+			this.StopButton.Text = "Stop";
 			// 
-			// toolStripButton2
+			// ClearButton
 			// 
-			this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton2.Name = "toolStripButton2";
-			this.toolStripButton2.Size = new System.Drawing.Size(51, 22);
-			this.toolStripButton2.Text = "Stop";
+			this.ClearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.ClearButton.Image = ((System.Drawing.Image)(resources.GetObject("ClearButton.Image")));
+			this.ClearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.ClearButton.Name = "ClearButton";
+			this.ClearButton.Size = new System.Drawing.Size(23, 22);
+			this.ClearButton.Text = "Clear";
 			// 
-			// toolStripButton3
+			// WriteButton
 			// 
-			this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-			this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton3.Name = "toolStripButton3";
-			this.toolStripButton3.Size = new System.Drawing.Size(54, 22);
-			this.toolStripButton3.Text = "Clear";
-			// 
-			// toolStripButton4
-			// 
-			this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-			this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton4.Name = "toolStripButton4";
-			this.toolStripButton4.Size = new System.Drawing.Size(55, 22);
-			this.toolStripButton4.Text = "Write";
+			this.WriteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.WriteButton.Image = ((System.Drawing.Image)(resources.GetObject("WriteButton.Image")));
+			this.WriteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.WriteButton.Name = "WriteButton";
+			this.WriteButton.Size = new System.Drawing.Size(23, 22);
+			this.WriteButton.Text = "Write";
 			// 
 			// HexToggle
 			// 
 			this.HexToggle.Checked = true;
 			this.HexToggle.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.HexToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.HexToggle.Image = ((System.Drawing.Image)(resources.GetObject("HexToggle.Image")));
 			this.HexToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.HexToggle.Name = "HexToggle";
-			this.HexToggle.Size = new System.Drawing.Size(48, 22);
+			this.HexToggle.Size = new System.Drawing.Size(23, 22);
 			this.HexToggle.Text = "Hex";
+			// 
+			// OpenSettings
+			// 
+			this.OpenSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.OpenSettings.Image = ((System.Drawing.Image)(resources.GetObject("OpenSettings.Image")));
+			this.OpenSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.OpenSettings.Name = "OpenSettings";
+			this.OpenSettings.Size = new System.Drawing.Size(23, 22);
+			this.OpenSettings.Text = "Settings";
 			// 
 			// Status
 			// 
@@ -181,14 +187,6 @@ namespace ComMon
 			this.ViewPanel.TabIndex = 6;
 			this.ViewPanel.Resize += new System.EventHandler(this.ViewPanel_Resize);
 			// 
-			// OpenSettings
-			// 
-			this.OpenSettings.Image = ((System.Drawing.Image)(resources.GetObject("OpenSettings.Image")));
-			this.OpenSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.OpenSettings.Name = "OpenSettings";
-			this.OpenSettings.Size = new System.Drawing.Size(69, 22);
-			this.OpenSettings.Text = "Settings";
-			// 
 			// MonitorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -218,8 +216,7 @@ namespace ComMon
 		private System.Windows.Forms.ToolStripStatusLabel DataStatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel StopStatusLabel;
 		private System.Windows.Forms.ToolStripStatusLabel ParityStatusLabel;
-		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripButton StartButton;
 		private System.Windows.Forms.ToolStripButton toolStripButton2;
 		private System.Windows.Forms.ToolStripButton toolStripButton3;
 		private System.Windows.Forms.ToolStripButton toolStripButton4;
@@ -228,5 +225,8 @@ namespace ComMon
 		private System.Windows.Forms.RichTextBox TextView;
 		private System.Windows.Forms.Panel ViewPanel;
 		private System.Windows.Forms.ToolStripButton OpenSettings;
+		private System.Windows.Forms.ToolStripButton StopButton;
+		private System.Windows.Forms.ToolStripButton ClearButton;
+		private System.Windows.Forms.ToolStripButton WriteButton;
 	}
 }
