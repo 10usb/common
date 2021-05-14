@@ -161,20 +161,22 @@ namespace ComMon
 			// 
 			// HexView
 			// 
+			this.HexView.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.HexView.Location = new System.Drawing.Point(3, 3);
 			this.HexView.Name = "HexView";
 			this.HexView.Size = new System.Drawing.Size(100, 96);
 			this.HexView.TabIndex = 3;
-			this.HexView.Text = "Hex";
+			this.HexView.Text = "";
 			this.HexView.VisibleChanged += new System.EventHandler(this.HexView_VisibleChanged);
 			// 
 			// TextView
 			// 
+			this.TextView.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.TextView.Location = new System.Drawing.Point(109, 3);
 			this.TextView.Name = "TextView";
 			this.TextView.Size = new System.Drawing.Size(100, 96);
 			this.TextView.TabIndex = 4;
-			this.TextView.Text = "Text";
+			this.TextView.Text = "";
 			// 
 			// ViewPanel
 			// 

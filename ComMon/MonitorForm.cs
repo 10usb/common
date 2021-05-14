@@ -17,7 +17,7 @@ namespace ComMon
 
 		public MonitorForm(string portName) {
 			InitializeComponent();
-			
+
 			port = new SerialPort(portName);
 			port.DataReceived += Port_DataReceived;
 
@@ -62,12 +62,22 @@ namespace ComMon
 		}
 
 		private void Append(byte[] buffer, int count) {
-				string text = Encoding.ASCII.GetString(buffer, 0, count);
-				TextView.SelectionStart = TextView.TextLength;
-				TextView.SelectionLength = 0;
-				TextView.SelectionColor = Color.Red;
-				TextView.AppendText(text);
-				TextView.ScrollToCaret();
+			string text = Encoding.ASCII.GetString(buffer, 0, count);
+			TextView.SelectionStart = TextView.TextLength;
+			TextView.SelectionLength = 0;
+			TextView.SelectionColor = Color.Red;
+			TextView.AppendText(text);
+			TextView.ScrollToCaret();
+
+			StringBuilder builder = new StringBuilder();
+			for (int index = 0; index < count; index++) {
+				builder.AppendFormat("{0:X2} ", buffer[index]);
+			}
+			HexView.SelectionStart = HexView.TextLength;
+			HexView.SelectionLength = 0;
+			HexView.SelectionColor = Color.Red;
+			HexView.AppendText(builder.ToString());
+			HexView.ScrollToCaret();
 		}
 
 		private void OpenSettings_Click(object sender, EventArgs e) {
