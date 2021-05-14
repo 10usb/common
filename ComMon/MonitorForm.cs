@@ -17,10 +17,57 @@ namespace ComMon
 
 		public MonitorForm(string portName) {
 			InitializeComponent();
+			
+			port = new SerialPort(portName);
+			port.DataReceived += Port_DataReceived;
+
+			StartButton.Enabled = !port.IsOpen;
+			StopButton.Enabled = port.IsOpen;
+
 			HexToggle.Click += HexToggle_Click;
 			OpenSettings.Click += OpenSettings_Click;
+			StartButton.Click += StartButton_Click;
+			StopButton.Click += StopButton_Click;
+			ClearButton.Click += ClearButton_Click;
 
-			port = new SerialPort(portName);
+		}
+
+		private void StartButton_Click(object sender, EventArgs e) {
+			try {
+				port.Open();
+				StartButton.Enabled = !port.IsOpen;
+				StopButton.Enabled = port.IsOpen;
+			} catch {
+
+			}
+		}
+		private void StopButton_Click(object sender, EventArgs e) {
+			port.Close();
+			StartButton.Enabled = !port.IsOpen;
+			StopButton.Enabled = port.IsOpen;
+		}
+		private void ClearButton_Click(object sender, EventArgs e) {
+			TextView.Text = string.Empty;
+			HexView.Text = string.Empty;
+		}
+
+		private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e) {
+			if (e.EventType == SerialData.Chars) {
+				byte[] buffer = new byte[1024];
+				int read = port.Read(buffer, 0, buffer.Length);
+				if (read > 0) {
+					Invoke(new Action<byte[], int>(Append), buffer, read);
+				}
+			}
+		}
+
+		private void Append(byte[] buffer, int count) {
+				string text = Encoding.ASCII.GetString(buffer, 0, count);
+				TextView.SelectionStart = TextView.TextLength;
+				TextView.SelectionLength = 0;
+				TextView.SelectionColor = Color.Red;
+				TextView.AppendText(text);
+				TextView.ScrollToCaret();
 		}
 
 		private void OpenSettings_Click(object sender, EventArgs e) {
