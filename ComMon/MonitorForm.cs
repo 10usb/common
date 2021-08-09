@@ -14,6 +14,7 @@ namespace ComMon
 	public partial class MonitorForm : Form
 	{
 		private SerialPort port;
+		private Timer timer;
 
 		public MonitorForm(string portName) {
 			InitializeComponent();
@@ -21,15 +22,26 @@ namespace ComMon
 			port = new SerialPort(portName);
 			port.DataReceived += Port_DataReceived;
 
+			Text = string.Format("Monitor: {0}", portName);
+
 			StartButton.Enabled = !port.IsOpen;
 			StopButton.Enabled = port.IsOpen;
+
+			timer = new Timer();
+			timer.Interval = 1000;
+			timer.Tick += Timer_Tick;
 
 			HexToggle.Click += HexToggle_Click;
 			OpenSettings.Click += OpenSettings_Click;
 			StartButton.Click += StartButton_Click;
 			StopButton.Click += StopButton_Click;
 			ClearButton.Click += ClearButton_Click;
+		}
 
+		private void Timer_Tick(object sender, EventArgs e) {
+			StartButton.Enabled = !port.IsOpen;
+			StopButton.Enabled = port.IsOpen;
+			timer.Enabled = port.IsOpen;
 		}
 
 		private void StartButton_Click(object sender, EventArgs e) {
@@ -37,6 +49,7 @@ namespace ComMon
 				port.Open();
 				StartButton.Enabled = !port.IsOpen;
 				StopButton.Enabled = port.IsOpen;
+				timer.Enabled = port.IsOpen;
 			} catch {
 
 			}
